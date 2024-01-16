@@ -62,7 +62,7 @@ export default function OrderDetails() {
     !localStorage.getItem("currentSession") &&
       Swal.fire({
         title: "¡Orden Lista!",
-        text: "Realiza el pago siguiendo las indicaciones...",
+        text: "Realiza el pago siguiendo las indicaciones",
         confirmButtonColor: "#035AC5",
         showConfirmButton: true,
       });

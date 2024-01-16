@@ -5,7 +5,6 @@ import { useAppContext } from "@/context";
 import { useFetchCurrency, usePostOrder } from "@/hooks";
 import { CustomButton, CustomInput, CustomButtonList } from "@/components/";
 import { parseNameCurrency } from "@/utils";
-
 import Swal from "sweetalert2";
 
 export default function Home() {
@@ -90,7 +89,7 @@ export default function Home() {
     }
     Swal.fire({
       title: "¡Generando Orden!",
-      text: "En unos segundos sera dirigirido...",
+      text: "En unos segundos sera dirigido",
       showConfirmButton: false,
       willOpen: () => {
         Swal.showLoading();

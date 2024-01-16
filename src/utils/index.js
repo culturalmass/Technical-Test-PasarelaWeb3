@@ -29,7 +29,7 @@ export function handleErrors(error) {
 //Modal to display the success of the Payment Order
 export const successAlert = Swal.mixin({
   title: "¡Pago completado!",
-  text: "En pocos segundos tendras tu saldo reflejado en tu cartera...",
+  text: "En pocos segundos tendras tu saldo reflejado en tu cartera",
   imageUrl: "/success-tick-circle.jpg",
   imageAlt: "success-tick-circle-icon",
   confirmButtonText: "Crear un nuevo pago",
@@ -41,7 +41,7 @@ export const successAlert = Swal.mixin({
 //Modal to display the failure of the Payment Order
 export const failureAlert = Swal.mixin({
   title: "¡Pago cancelado!",
-  text: "Intenta nuevamente creando un nuevo pago..",
+  text: "Intenta nuevamente creando un nuevo pago",
   imageUrl: "/failure-close-circle.jpg",
   imageAlt: "failure-close-circle-icon",
   confirmButtonText: "Crear un nuevo pago",
