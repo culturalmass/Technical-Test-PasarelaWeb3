@@ -127,17 +127,13 @@ export default function OrderDetails() {
   return (
     <section>
       <div className="flex justify-center items-center h-[45rem] ">
-        {action?.orderInfoArray !== "" && (
-          <>
-            <OrderDetaisContainer action={action} />
-            <PaymentDetailsContainer
-              action={action}
-              toggle={toggle}
-              timeLeft={timer.paymentTimeLeft}
-              handleToggle={handleToggle}
-            />
-          </>
-        )}
+        <OrderDetaisContainer action={action} />
+        <PaymentDetailsContainer
+          action={action}
+          toggle={toggle}
+          timeLeft={timer.paymentTimeLeft}
+          handleToggle={handleToggle}
+        />
       </div>
     </section>
   );

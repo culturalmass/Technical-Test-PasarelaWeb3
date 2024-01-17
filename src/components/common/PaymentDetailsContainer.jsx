@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useWeb3 } from "@/hooks";
 import { parseTimeLeft } from "@/utils";
+import { Spinner } from "..";
 
 export function PaymentDetailsContainer({
   action,
@@ -75,11 +76,15 @@ export function PaymentDetailsContainer({
         </div>
         <div className="flex justify-center items-center gap-2 text-[#002859]">
           <p>Enviar</p>
-          <h4 className="text-xl font-bold">
-            {action?.orderInfoArray?.crypto_amount.toString() +
-              " " +
-              action?.orderInfoArray?.currency_id.replace("_", " ")}
-          </h4>
+          {action?.orderInfoArray === "" ? (
+            <Spinner />
+          ) : (
+            <h4 className="text-xl font-bold">
+              {action?.orderInfoArray?.crypto_amount.toString() +
+                " " +
+                action?.orderInfoArray?.currency_id.replace("_", " ")}
+            </h4>
+          )}
           <Image
             src="/copy.jpg"
             alt="copy-icon.jpg"
@@ -94,9 +99,13 @@ export function PaymentDetailsContainer({
           />
         </div>
         <div className="flex justify-center items-start gap-2 text-[#002859] text-sm">
-          <p className="w-96 h-auto text-center break-words">
-            {action?.orderInfoArray?.address}
-          </p>
+          {action?.orderInfoArray === "" ? (
+            <Spinner />
+          ) : (
+            <p className="w-96 h-auto text-center break-words">
+              {action?.orderInfoArray?.address}
+            </p>
+          )}
           <Image
             src="/copy.jpg"
             alt="copy-icon.jpg"
@@ -116,7 +125,11 @@ export function PaymentDetailsContainer({
             width={18}
             className=" w-auto h-auto object-contain"
           />
-          <p>Etiqueta de destino: {action?.orderInfoArray?.identifier}</p>
+          {action?.orderInfoArray === "" ? (
+            <Spinner />
+          ) : (
+            <p>Etiqueta de destino: {action?.orderInfoArray?.identifier}</p>
+          )}
           <Image
             src="/copy.jpg"
             alt="copy-icon.jpg"
