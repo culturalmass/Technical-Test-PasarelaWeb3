@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import { useWeb3 } from "@/hooks";
 import { parseTimeLeft } from "@/utils";
 import { Spinner } from "..";
+import { Tooltip } from "react-tooltip";
 
 export function PaymentDetailsContainer({
   action,
@@ -52,8 +54,8 @@ export function PaymentDetailsContainer({
           {!toggle ? (
             <div className="flex w-48 h-48 items-center justify-center">
               <Image
-                src="/dummy-qrcode.jpg"
-                alt="dummy-qrcode-icon"
+                src={action?.qrCode}
+                alt="qrcode-icon"
                 height={193}
                 width={193}
                 className="h-auto w-auto object-contain"
@@ -118,28 +120,35 @@ export function PaymentDetailsContainer({
           />
         </div>
         <div className="flex justify-center items-center gap-2 text-[#002859] font-semibold text-xs text-wrap">
-          <Image
-            src="/warning-2.jpg"
-            alt="warning-2-icon.jpg"
-            height={18}
-            width={18}
-            className=" w-auto h-auto object-contain"
-          />
-          {action?.orderInfoArray === "" ? (
-            <Spinner />
-          ) : (
-            <p>Etiqueta de destino: {action?.orderInfoArray?.identifier}</p>
+          {action?.orderDetails?.tag_memo && (
+            <>
+              <Image
+                src="/warning-2.jpg"
+                alt="warning-2-icon.jpg"
+                height={18}
+                width={18}
+                className="w-auto h-auto object-contain"
+                data-tooltip-id="warning-memo"
+                data-tooltip-content="Agrega este TAG/MEMO en el Pago"
+              />
+              <Tooltip id="warning-memo" />
+              {action?.orderInfoArray === "" ? (
+                <Spinner />
+              ) : (
+                <p>Etiqueta de destino: {action?.orderDetails?.tag_memo}</p>
+              )}
+              <Image
+                src="/copy.jpg"
+                alt="copy-icon.jpg"
+                height={18}
+                width={18}
+                className=" w-auto h-auto object-contain cursor-pointer"
+                onClick={() => {
+                  navigator.clipboard.writeText(action?.orderDetails?.tag_memo);
+                }}
+              />
+            </>
           )}
-          <Image
-            src="/copy.jpg"
-            alt="copy-icon.jpg"
-            height={18}
-            width={18}
-            className=" w-auto h-auto object-contain cursor-pointer"
-            onClick={() => {
-              navigator.clipboard.writeText(action?.orderInfoArray?.identifier);
-            }}
-          />
         </div>
       </div>
     </div>

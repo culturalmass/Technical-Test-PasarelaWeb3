@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useAppContext } from "@/context";
 import { useFetchCurrency, usePostOrder } from "@/hooks";
 import { CustomButton, CustomInput, CustomButtonList } from "@/components/";
-import { parseNameCurrency } from "@/utils";
+import { generateQRcode, parseNameCurrency } from "@/utils";
 import Swal from "sweetalert2";
 
 export default function Home() {
@@ -102,7 +102,8 @@ export default function Home() {
     });
     setAction({
       ...action,
-      orderIdentifier: submitOrder.identifier,
+      orderDetails: submitOrder,
+      qrCode: await generateQRcode(submitOrder.payment_uri),
       amountForm: "",
       conceptForm: "",
     });

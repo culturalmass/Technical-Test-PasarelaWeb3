@@ -49,8 +49,7 @@ export function OrderDetaisContainer({ action }) {
                 className="h-auto w-auto object-contain"
               />
               <h5 className="font-semibold">
-                {"Comercio de Pruebas "}
-                {action?.orderInfoArray?.merchant_device_id}
+                {action?.orderInfoArray?.merchant_device}
               </h5>
             </div>
           )}

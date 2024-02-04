@@ -17,9 +17,9 @@ export function AppWrapper({ children }) {
     currentMaxAmount: "",
     conceptForm: "",
     filterCurrencyList: "",
-    orderIdentifier: null,
+    orderDetails: null,
     orderInfoArray: "",
-    // paymentTimeLeft: 900,
+    qrCorde: "",
   });
   return (
     <AppContext.Provider value={{ action, setAction }}>

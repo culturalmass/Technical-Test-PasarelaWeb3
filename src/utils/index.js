@@ -1,3 +1,4 @@
+import QRCode from "qrcode";
 import Swal from "sweetalert2";
 
 //Parse the name currency to fit the design
@@ -102,6 +103,12 @@ export function parseTimeLeft(timeLeft) {
 
   return minutes + ":" + seconds;
 }
+
+//Generate the QRCode to use in the paymenty section
+export const generateQRcode = async (data) => {
+  const src = await QRCode.toDataURL(data);
+  return src.toString();
+};
 
 //A compile of a list of general errors working with the Web3 and Metamask
 export const parseWeb3Error = (error) => {

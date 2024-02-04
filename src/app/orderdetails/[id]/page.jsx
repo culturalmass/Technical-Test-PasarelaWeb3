@@ -39,6 +39,8 @@ export default function OrderDetails() {
         currentIcon: localData.currentIcon,
         currentCurrency: localData.currentCurrency,
         currentSymbol: localData.currentSymbol,
+        QRCode: localData.QRCode,
+        orderDetails: localData.orderDetails,
         orderInfoArray: orderInfo[0],
       });
     } else {
@@ -49,9 +51,11 @@ export default function OrderDetails() {
       localStorage.setItem(
         "currentSession",
         JSON.stringify({
+          orderDetails: action.orderDetails,
           currentIcon: action.currentIcon,
           currentCurrency: action.currentCurrency,
           currentSymbol: action.currentSymbol,
+          QRCode: action.QRCode,
         })
       );
     }
@@ -85,7 +89,7 @@ export default function OrderDetails() {
             setAction({
               ...action,
               orderInfoArray: "",
-              orderIdentifier: null,
+              orderDetails: null,
             });
             localStorage.removeItem("currentSession");
             router.push("/");
@@ -105,7 +109,7 @@ export default function OrderDetails() {
           setAction({
             ...action,
             orderInfoArray: "",
-            orderIdentifier: null,
+            orderDetails: null,
           });
           setTimer({ isOn: false, paymentTimeLeft: 3600 });
           localStorage.removeItem("currentSession");
